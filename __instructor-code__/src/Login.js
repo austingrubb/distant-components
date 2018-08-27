@@ -16,12 +16,14 @@ class Login extends Component {
   }
 
   render() {
-    const { loggedInAs, isCreditCardHolder } = this.props;
+    // const { loggedInAs } = this.props;
+    console.log('this.props', this.props)
 
     return (
       <div className="login">
         {!loggedInAs && <div>
           Log in as <input onChange={(e) => this.updateLoginName(e.target.value)} /> <button className="button"
+          onClick={() => setLoggedInAs(this.state.loginName)}
           >Go</button>
         </div>}
         {loggedInAs && <div>
@@ -32,11 +34,11 @@ class Login extends Component {
   }
 };
 
+
 const mapStateToProps = state => {
   return {
-    loggedInAs: state.loggedInAs,
-    isCreditCardHolder: state.isCreditCardHolder,
-  };
-};
+    x: 5
+  }
+}
 
 export default connect(mapStateToProps)(Login);

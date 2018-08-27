@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import {login} from './ducks/reducer'
+
 
 class Login extends Component {
   constructor() {
@@ -8,7 +10,7 @@ class Login extends Component {
       loginName: ''
     };
 
-    this.updateLoginName = this.updateLoginName.bind(this);
+    // this.updateLoginName = this.updateLoginName.bind(this);
   }
 
   updateLoginName(name) {
@@ -16,12 +18,12 @@ class Login extends Component {
   }
 
   render() {
-    const { loggedInAs, isCreditCardHolder } = this.props;
+    const { loggedInAs, isCreditCardHolder, logIn } = this.props;
 
     return (
       <div className="login">
         {!loggedInAs && <div>
-          Log in as <input onChange={(e) => this.updateLoginName(e.target.value)} /> <button className="button">Go</button>
+          Log in as <input onChange={(e) => this.updateLoginName(e.target.value)} /> <button className="button" onClick={() => logIn(this.state.loginName)}>Go</button>
         </div>}
         {loggedInAs && <div>
           Welcome, {loggedInAs}! {isCreditCardHolder && "(CC holder)"}
@@ -31,11 +33,15 @@ class Login extends Component {
   }
 };
 
-const mapStateToProps = storeData => {
-  return{
-    loggedInAs: storeData.loggedInAs,
-    isCreditCardHolder: storeData.isCreditCardHolder
+const mapStateToProps = state => {
+  return {
+    loggedInAs: state.loggedInAs,
+    isCreditCardHolder: state.isCreditCardHolder
   }
 }
 
-export default connect(mapStateToProps)(Login)
+const mapDispatchToProps = {
+    logIn: login
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -9,13 +9,19 @@ redux is a global data store we use it whenever its less painful the props drill
   * READ
     * create store in store file
     * in index.js, use Provider and pass in store
+    * use connect in ech component to read data from store 
+  * WRITE
+    * still connect component (same as before)
+      * in component dispatch actions to store 
+    * create reducer file 
+      * create reducer function 
+      * create action names 
+      * make action creator functions
 ## What is a store?
-
+a store holds data it also has a reducer. its like a grocery store with groceries and the reducer is the receiving department 
 ## What is a reducer? What does the reducer do for us in Redux?
-
+a function that takes in some state as an action and outputs the new state 
 ## What is immutability? Why do we use it?
+immutability is when we dont change data but instead make a copy and change the copy
 
-* Steps for redux
-  * READ
-    * create store in store file
-    * in index.js, use Provider and pass in store
+we use it to check for a single change 
