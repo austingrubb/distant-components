@@ -3,7 +3,7 @@ import Header from './Header';
 import MainContent from './MainContent';
 import Footer from './Footer';
 import './App.css';
- 
+
 class App extends Component {
   constructor() {
     super();
@@ -27,9 +27,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header name={this.state.loggedInAs} isCreditCardHolder={this.state.isCreditCardHolder} setLoggedInAs={this.setLoggedInAs} />
         <MainContent />
-        <Footer />
+        <Footer name={this.state.loggedInAs} isCreditCardHolder={this.state.isCreditCardHolder} setIsCreditCardHolder={this.setIsCreditCardHolder} />
       </div>
     );
   }
